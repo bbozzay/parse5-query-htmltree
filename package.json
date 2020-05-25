@@ -1,0 +1,30 @@
+{
+  "name": "parse5-query-htmltree",
+  "version": "1.0.0",
+  "description": "DOM query methods for the parse5 htmlTree",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbozzay/parse5-query-htmltree.git"
+  },
+  "keywords": [
+    "parse5",
+    "node",
+    "htmlTree"
+  ],
+  "author": "Ben Bozzay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbozzay/parse5-query-htmltree/issues"
+  },
+  "homepage": "https://github.com/bbozzay/parse5-query-htmltree#readme",
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  },
+  "dependencies": {
+    "assert": "^2.0.0"
+  }
+}
