@@ -1,5 +1,5 @@
 var assert = require("assert");
-const { queryAll, queryNodes } = require("../src")
+const { queryAll } = require("../src")
 const parse5 = require("parse5");
 const html = require("../html")
 
@@ -61,8 +61,8 @@ describe("Match elements", function () {
   describe("Refactoring...", function () {
     it("attr value", function () {
       // let document = queryAll(htmlTree)
-      // let elements = document.getElementsById("one")
-      console.log(queryAll(htmlTree).getElementsById("one"))
+      let elements = queryAll(htmlTree).getElementsById("one")
+      console.log(elements,"ee")
 
       // elements.prototype.hasAttribute = function() {
 
