@@ -14,6 +14,14 @@ const walk = (node, callback) => {
         return false;
       } else {
         childNode = node.childNodes[++i];
+        if (childNode) {
+          childNode.hasAttributes = function() {
+            return this.attrs && this.attrs.length > 0 ? true : false
+          }
+          childNode.getAttribute = function(attr_name) {
+            return this.attrs ? this.attrs.filter(attr => attr.name == attr_name)[0].value : false
+          }
+        }
       }
     }
   }
