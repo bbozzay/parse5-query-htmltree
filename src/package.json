@@ -1,6 +1,6 @@
 {
   "name": "parse5-query-domtree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Methods for querying nodes on a parse5 generated htmlTree",
   "main": "index.js",
   "scripts": {
