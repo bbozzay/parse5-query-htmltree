@@ -8,7 +8,7 @@ npm install --save parse5-query-htmltree
 
 ### Import into project
 ```
-const { queryAll } = require("parse5-query-htmltree")
+const { queryAll, queryOne } = require("parse5-query-htmltree")
 ```
 
 ## Find Nodes
@@ -16,7 +16,7 @@ const { queryAll } = require("parse5-query-htmltree")
 Project example
 ```
 const parse5 = require("parse5");
-const { queryAll } = require("parse5-query-htmltree")
+const { queryAll, queryOne } = require("parse5-query-htmltree")
 
 (async() => {
     let page = await axios.get("/some-website/");
@@ -29,7 +29,7 @@ const { queryAll } = require("parse5-query-htmltree")
     let nodesWithAttributeName = queryAll(htmlTree).getElementsByAttribute("data-type");
     let nodesWithAttributeValue = queryAll(htmlTree).getElementsByAttribute("data-type", "video");
     let nodesWithClassName = queryAll(htmlTree).getElementsByClassName("container");
-    let nodesWithId = queryAll(htmlTree).getElementsWithId("section-1");
+    let nodesWithId = queryOne(htmlTree).getElementsWithId("section-1");
 
 })()
 ```

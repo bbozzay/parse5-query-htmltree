@@ -73,7 +73,6 @@ describe("Match elements", function () {
 
   describe("Return One Match", function () {
     it("By Class", function () {
-      // let document = queryAll(htmlTree)
       let className = queryOne(htmlTree).getElementsByClassName("container")
       assert(className instanceof Object)
       assert(className.classList.includes("container"))
@@ -90,29 +89,24 @@ describe("Match elements", function () {
 
   describe("Array node methods for filtering results", function () {
     it("Get nodelist by attribute value", function () {
-      // let document = queryAll(htmlTree)
       let elements = queryAll(htmlTree).getElementsByAttribute("data-type", "video")
       assert(elements.length == 2)
     });
   })
   describe("Single node methods", function () {
     it("hasAttributes", function () {
-      // let document = queryAll(htmlTree)
       let elements = queryAll(htmlTree).getElementsByAttribute("data-type")[0].hasAttributes()
       assert(elements == true)
     });
     it("getAttribute", function () {
-      // let document = queryAll(htmlTree)
       let elements = queryAll(htmlTree).getElementsByAttribute("data-type", "video")[0].getAttribute("data-type")
       assert(elements == "video")
     });
     it("one classlist", function () {
-      // let document = queryAll(htmlTree)
       let classList = queryAll(htmlTree).getElementsByClassName("container")[0].classList
       assert(classList == "container")
     });
     it("two classes", function () {
-      // let document = queryAll(htmlTree)
       let classList = queryAll(htmlTree).getElementsByClassName("one-row")[0].classList
       assert(classList.length == 2)
     });
