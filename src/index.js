@@ -2,8 +2,9 @@ const walk = require("./walk");
 
 
 class TreeQuery {
-  constructor(htmlTree) {
+  constructor(htmlTree, returnOne) {
     this.htmlTree = htmlTree;
+    this.returnOne = returnOne || false;
     this.matches = () => {
       let matches = new Array();
 
@@ -27,10 +28,6 @@ class TreeQuery {
         return this;
       };
 
-      matches.getAttribute = function (attributeName) {
-        let attr_values = []
-      };
-
       return matches;
     };
     this.matched = this.matches();
@@ -40,6 +37,9 @@ class TreeQuery {
     walk(this.htmlTree, (node) => {
       node.tagName && node.tagName == tag ? this.matched.push(node) : false;
     });
+    if (this.returnOne) {
+        return this.matched ? this.matched[0] : false;
+    }
     return this.matched;
   }
 
@@ -55,7 +55,9 @@ class TreeQuery {
         ? this.matched.push(node)
         : false;
     });
-
+    if (this.returnOne) {
+        return this.matched ? this.matched[0] : false;
+    }
     return this.matched;
   }
 
@@ -68,7 +70,9 @@ class TreeQuery {
         ? this.matched.push(node)
         : false;
     });
-
+    if (this.returnOne) {
+        return this.matched ? this.matched[0] : false;
+    }
     return this.matched;
   }
 
@@ -81,27 +85,22 @@ class TreeQuery {
         ? this.matched.push(node)
         : false;
     });
-    //   this.hasAttribute("class") && this.hasAttribute.filter(attr => attr.name == "class" && attr.value == class_name) ? matches.push(node) : false;
+    if (this.returnOne) {
+        return this.matched ? this.matched[0] : false;
+    }
     return this.matched;
   }
 }
 
 // Returns an array of matches
-
 function queryAll(htmlTree) {
-  // Returns a class with methods
-  // return the attribute value
-//   let nodes = []
-//   walk(htmlTree, (node) => {
-//     node.hasAttribute = function() {
-//         return this
-//     }
-//     nodes.push(node)
-//   })
-//   console.log(nodes)
   return new TreeQuery(htmlTree);
 }
 
+function queryOne(htmlTree) {
+  return new TreeQuery(htmlTree, true)
+}
 module.exports = {
   queryAll,
+  queryOne
 };

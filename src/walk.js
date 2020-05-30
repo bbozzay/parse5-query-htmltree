@@ -19,8 +19,22 @@ const walk = (node, callback) => {
             return this.attrs && this.attrs.length > 0 ? true : false
           }
           childNode.getAttribute = function(attr_name) {
-            return this.attrs ? this.attrs.filter(attr => attr.name == attr_name)[0].value : false
+            if (this.attrs) {
+              let attrFound = this.attrs.filter(attr => attr.name == attr_name)
+              return attrFound[0] ? attrFound[0].value : false
+            } else {
+              return false
+            }
           }
+          
+          if (childNode.getAttribute("class")) {
+            childNode.classList = (() => {
+              let matchedClasses = childNode.getAttribute("class").split(" ");
+              return matchedClasses
+            })()
+          }
+            // console.log("CC", this.getAttribute("class"))
+            // return this.getAttribute("class")[0] ? this.getAttribute("class").value : false;
         }
       }
     }

@@ -1,5 +1,5 @@
 var assert = require("assert");
-const { queryAll } = require("../src")
+const { queryAll, queryOne } = require("../src")
 const parse5 = require("parse5");
 const html = require("../html")
 
@@ -71,6 +71,23 @@ describe("Match elements", function () {
     });
   });
 
+  describe("Return One Match", function () {
+    it("By Class", function () {
+      // let document = queryAll(htmlTree)
+      let className = queryOne(htmlTree).getElementsByClassName("container")
+      assert(className instanceof Object)
+      assert(className.classList.includes("container"))
+    });
+    it("Attribute", function () {
+      let node = queryOne(htmlTree).getElementsByAttribute("data-type")
+      assert(node.getAttribute("data-type"))
+    });
+    it("Attribute value", function () {
+      let node = queryOne(htmlTree).getElementsByAttribute("data-type", "video")
+      assert(node.getAttribute("data-type") == "video")
+    });
+  })
+
   describe("Array node methods for filtering results", function () {
     it("Get nodelist by attribute value", function () {
       // let document = queryAll(htmlTree)
@@ -87,8 +104,17 @@ describe("Match elements", function () {
     it("getAttribute", function () {
       // let document = queryAll(htmlTree)
       let elements = queryAll(htmlTree).getElementsByAttribute("data-type", "video")[0].getAttribute("data-type")
-      console.log(elements)
       assert(elements == "video")
+    });
+    it("one classlist", function () {
+      // let document = queryAll(htmlTree)
+      let classList = queryAll(htmlTree).getElementsByClassName("container")[0].classList
+      assert(classList == "container")
+    });
+    it("two classes", function () {
+      // let document = queryAll(htmlTree)
+      let classList = queryAll(htmlTree).getElementsByClassName("one-row")[0].classList
+      assert(classList.length == 2)
     });
   });
 });

@@ -1,5 +1,5 @@
 # parse5-query-htmltree
-Familiar DOM parser methods for traversing the parse5 htmlTree.
+Familiar DOM parser methods for traversing the parse5 DOM tree.
 
 ### Install
 ```
@@ -32,3 +32,22 @@ const { queryAll } = require("parse5-query-htmltree")
     let nodesWithId = queryAll(htmlTree).getElementsWithId("section-1");
 
 })()
+```
+
+
+### Array methods
+Return an array of nodes from the parse5 DOMTree using standard DOM methods.
+getElementsByClassName()
+getElementsById()
+getElementsByAttribute()
+getElementsByTagName()
+
+
+### Single element methods
+Evaluate a node object. This extends the standard node from the parse5 DOM tree.
+
+.classList
+Return an array of classes for the given node.
+
+.getAttribute(name, value)
+Return an arrtibute value.
