@@ -21,32 +21,55 @@ const { queryAll, queryOne } = require("parse5-query-domtree")
 (async() => {
     let page = await axios.get("/some-website/");
 
-    // generate the html tree
+    //
+    // Return the HTML tree
+    //
     let htmlTree = parse5.parse(page.data);
 
-    // explore the tree
-    let paragraphs = queryAll(htmlTree).getElementsByTagName("p");
+    //
+    // Explore the tree
+    //
+    
+    // Find all nodes by HTML tag
+    let allParagraphs = queryAll(htmlTree).getElementsByTagName("p");
     // Array
 
-    let nodesWithAttributeName = queryAll(htmlTree).getElementsByAttribute("data-type");
+    // Find all nodes with an HTML attribute
+    let allNodesWithAttributeName = queryAll(htmlTree).getElementsByAttribute("data-type");
     // Array
 
-    let nodesWithAttributeValue = queryAll(htmlTree).getElementsByAttribute("data-type", "video");
+    // Find all nodes with an HTML attribute with a specific value
+    // Example: <div data-type="video"></div>
+    let allNodesWithAttributeValue = queryAll(htmlTree).getElementsByAttribute("data-type", "video");
     // Array
 
-    let nodesWithClassName = queryAll(htmlTree).getElementsByClassName("container");
+    // Find all nodes containing a class
+    // Example: <div class="container red_bg"></div>
+    let allNodesWithClassName = queryAll(htmlTree).getElementsByClassName("container");
     // Array
-
-    let nodesWithClassName = queryAll(htmlTree).getElementsByClassName("container").classList
-    // ["container"]
-
-    let nodesWithId = queryOne(htmlTree).getElementsWithId("section-1");
+    
+    // Find one node containing an ID
+    // Example: <div id="section-1"></div>
+    // You could also use getElementsByAttribute("id", "section-1")
+    let oneNodeWithId = queryOne(htmlTree).getElementsById("section-1");
     // Object
 
-    let nodesWithId = queryOne(htmlTree).getElementsWithId("section-1").hasAttributes()
+    //
+    // Single element methods
+    //
+    
+    // Find all nodes containing a class, then return the classList for the first node
+    let oneNodeContainingClass = queryAll(htmlTree).getElementsByClassName("container")[0].classList
+    // ["container"]
+
+
+    // Find one node and check if it has any attributes
+    let nodeHasAnyAttributes = queryOne(htmlTree).getElementsById("section-1").hasAttributes()
     // true
 
-    let nodesWithId = queryOne(htmlTree).getElementsWithId("section-1").getAttribute("id")
+    // Find one node and return the value of an attribute
+    // Example: <div id="section-1"></div>
+    let oneNodeAttributeValue = queryOne(htmlTree).getElementsById("section-1").getAttribute("id")
     // "section-1"
 })()
 ```
@@ -65,7 +88,6 @@ QueryAll(htmlTree).getElementsByClassName()
 QueryAll(htmlTree).getElementsById()
 QueryAll(htmlTree).getElementsByAttribute()
 QueryAll(htmlTree).getElementsByTagName()
-QueryOne(htmlTree).getElementsByTagName()
 ```
 
 ### Single element methods
