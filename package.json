@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/bbozzay/parse5-query-htmltree#readme",
   "devDependencies": {
-    "mocha": "^7.2.0"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "assert": "^2.0.0",
